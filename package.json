@@ -1,0 +1,86 @@
+{
+  "name": "with-next-apollo-tree-walker",
+  "description": "Apollo SSR data fetching on a per component basis with getDataFromTree without having to (pre)fetch in getInitialProps",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "source": "src/index.ts",
+  "main": "dist/with-next-apollo-tree-walker.js",
+  "exports": "dist/with-next-apollo-tree-walker.modern.js",
+  "module": "dist/with-next-apollo-tree-walker.module.js",
+  "unpkg": "dist/with-next-apollo-tree-walker.umd.js",
+  "homepage": "https://github.com/daphnesmit/with-next-apollo-tree-walker#readme",
+  "author": "Daphne Smit",
+  "sideEffects": false,
+  "keywords": [
+    "apollo",
+    "nextjs",
+    "next",
+    "getDataFromTree",
+    "ssr",
+    "fetch",
+    "tree-walker"
+  ],
+  "contributors": [
+    {
+      "name": "Lennard Westerveld",
+      "email": "mail@lennard.pro"
+    },
+    {
+      "name": "Daphne Smit",
+      "email": "daphnesmit1986@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daphnesmit/with-next-apollo-tree-walker"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch",
+    "build:types": "tsc --declaration --emitDeclarationOnly",
+    "lint": "npm run type-check",
+    "type-check": "tsc --noEmit"
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "develop",
+        "prerelease": true
+      }
+    ],
+    "plugins": [
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator"
+    ]
+  },
+  "peerDependencies": {
+    "@apollo/client": "3.*",
+    "react": ">=16",
+    "react-dom": ">=16",
+    "next": ">=10",
+    "graphql": ">=15"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.3.7",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-angular": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "graphql": "^15.4.0",
+    "husky": "^4.3.8",
+    "microbundle": "^0.13.0",
+    "next": "^10.0.5",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "typescript": "^4.1.3"
+  }
+}

@@ -1,13 +1,13 @@
 import { ApolloCache } from '@apollo/client/cache/core/cache';
 import { NormalizedCacheObject } from '@apollo/client/cache/inmemory/types';
-import React, { Context } from 'react';
+import React from 'react';
 
 export type ApolloCacheControllerCacheSnapshot = Record<string, NormalizedCacheObject>;
 
 export class ApolloCacheController {
   private cacheInstances = new Map<string, ApolloCache<NormalizedCacheObject>>();
   private storedExtractedCache = new Map<string, NormalizedCacheObject>();
-  private static context: Context<ApolloCacheController | null>;
+  private static context: React.Context<ApolloCacheController | null>;
 
   public static getContext() {
     if (!ApolloCacheController.context) {

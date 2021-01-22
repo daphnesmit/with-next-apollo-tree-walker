@@ -1,5 +1,5 @@
 import { InMemoryCache, NormalizedCacheObject } from '@apollo/client';
-import { useContext, useMemo } from 'react';
+import React from 'react';
 
 import { ApolloCacheController } from './ApolloCacheController';
 
@@ -9,12 +9,12 @@ interface UseApolloCacheController  {
 }
 
 export const useApolloCacheController = (): UseApolloCacheController => {
-  const context = useContext(ApolloCacheController.getContext());
+  const context = React.useContext(ApolloCacheController.getContext());
   if (context === null) {
     throw new Error('Cannot use useApolloCacheController without context provider');
   }
 
-  const state = useMemo(() => ({
+  const state = React.useMemo(() => ({
     register: (name: string, cache: InMemoryCache) => context.registerCache(name, cache),
     extract: (name: string) => context.getExtractedCache(name)
   }),[])

@@ -1,7 +1,7 @@
 import { NextPage, NextPageContext } from 'next';
 import App, { AppContext } from 'next/app';
 import Head from 'next/head';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { ApolloCacheController, ApolloCacheControllerCacheSnapshot } from './ApolloCacheController';
 import { getDisplayName } from './utils/getDisplayName';
@@ -19,7 +19,7 @@ export default function withApolloTreeWalker(
   const ApolloCacheControllerContext = ApolloCacheController.getContext();
 
   function WithApollo({ apolloCacheControlSnapshot, apolloCacheControl, ...props }: IWithApolloProps) {
-    const _apolloCacheController = useMemo<ApolloCacheController>(
+    const _apolloCacheController = React.useMemo<ApolloCacheController>(
       () => apolloCacheControl || new ApolloCacheController(), [apolloCacheControl],
     );
 

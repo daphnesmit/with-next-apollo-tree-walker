@@ -16,7 +16,6 @@ module.exports = withPlugins(
           rule.include = undefined;
         }
       });
-      
       return config;
     },
   },

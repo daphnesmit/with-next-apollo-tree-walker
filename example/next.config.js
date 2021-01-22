@@ -7,9 +7,4 @@ module.exports = withPlugins(
   [
     withBundleAnalyzer,
   ],
-  {
-    webpack: (config) => {
-      return config;
-    },
-  },
 );

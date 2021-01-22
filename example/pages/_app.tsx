@@ -1,6 +1,6 @@
 import { ApolloProvider } from '@apollo/client'
 import { AppProps } from 'next/app'
-import { withApolloServerSideRender } from '../../dist/with-next-apollo-tree-walker.module'
+import { withApolloServerSideRender } from 'with-next-apollo-tree-walker'
 import '../styles/globals.css'
 import { useApollo } from '../utils/apolloClient'
 

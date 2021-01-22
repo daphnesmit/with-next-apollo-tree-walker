@@ -39,7 +39,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "microbundle",
+    "build": "microbundle --jsx React.createElement",
     "dev": "microbundle watch",
     "build:types": "tsc --declaration --emitDeclarationOnly",
     "lint": "npm run type-check",

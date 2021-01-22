@@ -16,20 +16,21 @@ interface IWithApolloProps {
 export default function withApolloTreeWalker(
   PageComponent: NextPage<any> | typeof App,
 ) {
-  const ApolloCacheControllerContext = ApolloCacheController.getContext();
+  const ApolloCacheControlContext = ApolloCacheController.getContext();
 
   function WithApollo({ apolloCacheControlSnapshot, apolloCacheControl, ...props }: IWithApolloProps) {
-    const _apolloCacheController = React.useMemo<ApolloCacheController>(
+    const _apolloCacheControl = React.useMemo<ApolloCacheController>(
       () => apolloCacheControl || new ApolloCacheController(), [apolloCacheControl],
     );
 
     if (apolloCacheControlSnapshot && Object.keys(apolloCacheControlSnapshot).length) {
-      _apolloCacheController.restoreSnapshot(apolloCacheControlSnapshot);
+      _apolloCacheControl.restoreSnapshot(apolloCacheControlSnapshot);
     }
+    
     return (
-      <ApolloCacheControllerContext.Provider value={_apolloCacheController}>
+      <ApolloCacheControlContext.Provider value={_apolloCacheControl}>
         <PageComponent {...props} />
-      </ApolloCacheControllerContext.Provider>
+      </ApolloCacheControlContext.Provider>
     );
   }
 
@@ -45,7 +46,10 @@ export default function withApolloTreeWalker(
     let pageProps = {};
     if (PageComponent.getInitialProps) {
       pageProps = { ...pageProps, ...(await PageComponent.getInitialProps(ctx)) };
-    } 
+    } else if (isInAppContext) {
+      pageProps = { ...pageProps, ...(await App.getInitialProps(ctx)) };
+    }
+
     if (typeof window !== 'undefined') {
       return pageProps;
     }

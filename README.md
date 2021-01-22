@@ -106,6 +106,16 @@ export function useApollo(cacheId: string) {
 }
 ```
 
+## Authors
+Made by [Lennard Westerveld](https://github.com/LennardWesterveld)
+Published by [Daphne Smit](https://github.com/daphnesmit)
+
+## Prior Art
+The approach of doing an initial "data fetching pass" is inspired by:
+
+- [`react-ssr-prepass`](https://github.com/FormidableLabs/react-ssr-prepass)
+- [`react-apollo`'s `getDataFromTree`](https://github.com/apollographql/react-apollo/blob/master/src/getDataFromTree.ts)
+
 ## Production Build
 
 Run `npm run build` to build a file for production and emit the types

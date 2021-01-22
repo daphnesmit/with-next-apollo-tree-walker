@@ -46,9 +46,7 @@ export default function withApolloTreeWalker(
     let pageProps = {};
     if (PageComponent.getInitialProps) {
       pageProps = { ...pageProps, ...(await PageComponent.getInitialProps(ctx)) };
-    } else if (isInAppContext) {
-      pageProps = { ...pageProps, ...(await App.getInitialProps(ctx)) };
-    }
+    } 
 
     if (typeof window !== 'undefined') {
       return pageProps;

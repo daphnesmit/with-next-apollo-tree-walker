@@ -1,13 +1,12 @@
 # with-next-apollo-tree-walker
 Apollo SSR data fetching on a per component basis with getDataFromTree without having to (pre)fetch in getInitialProps
 
-⚠️ !! WIP! this is a WIP. currently imported modules does not work yet!! ⚠️
 
 ## What is it?
 This package consists of a `withApolloTreeWalker` HOC and a `useApolloCacheController` hook.
 With this package you can achieve SSR data fetching on a per component basis without having to (pre)fetch in getInitialProps.
 
-We integrate Apollo with Apollo's [getDataFromTree](https://www.apollographql.com/docs/react/performance/server-side-rendering/#executing-queries-with-getdatafromtree) to fetch queries on the server from inside any component and hydrate them in the client with a custom Cache Controller.
+We integrate Apollo with Apollo's [getDataFromTree](https://www.apollographql.com/docs/react/performance/server-side-rendering/#executing-queries-with-getdatafromtree) to fetch queries on the server from inside any component using useQuery and hydrate them in the client with a cache controller instance.
 
 Because our app uses Apollo Client, some of the components in the React tree probably execute a GraphQL query with the useQuery hook. We can instruct Apollo Client to execute all of the queries required by the tree's components with the getDataFromTree function.
 
@@ -32,7 +31,7 @@ This means that if you have nested queries you cause a lot of full server-render
 
 This solution might cause you a performance overhead (and general bundle size when using Apollo is quite heavy currently). 
 
-But try and and see if its a bottleneck for you!
+But try it out and see if it is a bottleneck for you!
 
 ## Usage
 See the `example` folder for a full fletched example on how to use this.

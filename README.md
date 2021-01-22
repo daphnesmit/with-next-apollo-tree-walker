@@ -97,10 +97,10 @@ function initializeApollo({ registerCache, initialState }) {
 }
 
 export function useApollo(cacheId: string) {
-  const { register, extract } = useApolloCacheController()
+  const ApolloCacheController = useApolloCacheController()
 
-  const registerCache = (cache: InMemoryCache) => register(cacheId, cache)
-  const initialState = extract(cacheId)
+  const registerCache = (cache: InMemoryCache) => ApolloCacheController.registerCache(cacheId, cache)
+  const initialState = ApolloCacheController.getExtractedCache(cacheId)
 
   return useMemo(() => initializeApollo({ registerCache, initialState }), [registerCache, initialState])
 }

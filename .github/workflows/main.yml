@@ -54,7 +54,7 @@ jobs:
           name: dist
           path: dist
   
-  build:
+  deploy_npm:
     name: Deploy on NPM
     if: github.ref == 'refs/heads/develop' || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/release'
     needs: [ build ]

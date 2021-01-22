@@ -1,7 +1,7 @@
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { concatPagination } from '@apollo/client/utilities'
 import { useMemo } from 'react'
-import { useApolloCacheController } from '../../dist/with-next-apollo-tree-walker.modern'
+import { useApolloCacheController } from 'with-next-apollo-tree-walker'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 

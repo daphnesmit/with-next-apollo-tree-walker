@@ -1,6 +1,7 @@
 # with-next-apollo-tree-walker
 Apollo SSR data fetching on a per component basis with getDataFromTree without having to (pre)fetch in getInitialProps
 
+⚠️ !! WIP! this is a WIP. currently imported modules does not work yet!! ⚠️
 
 ## What is it?
 This package consists of a `withApolloTreeWalker` HOC and a `useApolloCacheController` hook.

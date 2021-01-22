@@ -1,5 +1,6 @@
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
 import { concatPagination } from '@apollo/client/utilities'
+import React from 'react'
 import { useMemo } from 'react'
 import { useApolloCacheController } from 'with-next-apollo-tree-walker'
 
@@ -52,13 +53,12 @@ function initializeApollo({ registerCache, initialState }: initializeApolloProps
 }
 
 export function useApollo(cacheId: string) {
-  const { register, extract } = useApolloCacheController()
+  const ApolloCacheController = useApolloCacheController()
 
-  const registerCache = (cache: InMemoryCache) => register(cacheId, cache)
-  const initialState = extract(cacheId)
-
+  const registerCache = React.useCallback((cache) =>  ApolloCacheController.registerCache(cacheId, cache), [ApolloCacheController]);
+  
   return useMemo(() => initializeApollo({
     registerCache,
-    initialState
-  }), [registerCache, initialState])
+    initialState: ApolloCacheController.getExtractedCache(cacheId)
+  }), [registerCache])
 }

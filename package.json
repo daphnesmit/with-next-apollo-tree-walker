@@ -60,6 +60,12 @@
       "@semantic-release/release-notes-generator"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "peerDependencies": {
     "@apollo/client": "3.*",
     "react": ">=16",

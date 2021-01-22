@@ -13,7 +13,7 @@
     "next": "10.0.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "with-next-apollo-tree-walker": "^1.0.0-develop.3"
+    "with-next-apollo-tree-walker": "^1.0.0-develop.4"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.5",

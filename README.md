@@ -55,27 +55,27 @@ function MyApp({ Component, pageProps }: AppProps)  {
 export default withApolloServerSideRender(MyApp)
 ```
 
-In your custom hook useApollo register and extract your cache.
+In your custom hook useApollo you need to register and extract your cache.
 
 ```typescript
 import { useApolloCacheController } from  'with-next-apollo-tree-walker'
 
 import { ApolloClient, HttpLink, InMemoryCache, NormalizedCacheObject } from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
 import { useMemo } from 'react'
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined
 
 function createApolloClient({ registerCache, initialState }) {
+
+  const link = new HttpLink({
+    uri: 'YOUR_URI',
+  })
+  
   const cache = new InMemoryCache({}).restore(initialState || {})
 
   if (registerCache) {
     registerCache(cache)
   }
-
-  const link = new HttpLink({
-    uri: 'YOUR_URI',
-  })
 
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
@@ -102,10 +102,7 @@ export function useApollo(cacheId: string) {
   const registerCache = (cache: InMemoryCache) => register(cacheId, cache)
   const initialState = extract(cacheId)
 
-  return useMemo(() => initializeApollo({
-    registerCache,
-    initialState
-  }), [registerCache, initialState])
+  return useMemo(() => initializeApollo({ registerCache, initialState }), [registerCache, initialState])
 }
 ```
 
@@ -115,3 +112,6 @@ Run `npm run build` to build a file for production and emit the types
 
 ## Development Build
 Run `npm run dev` to build a file for development
+## Contributing
+You are free to contribute to this project!
+Please use a conventional commit and make pull requests to the develop branch (pre-release branch).

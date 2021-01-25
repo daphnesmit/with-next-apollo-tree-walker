@@ -1,6 +1,8 @@
 # with-next-apollo-tree-walker
 Apollo SSR data fetching on a per component basis with getDataFromTree without having to (pre)fetch in getInitialProps
 
+[![CI Status](https://github.com/daphnesmit/with-next-apollo-tree-walker/workflows/CI/badge.svg)](https://github.com/daphnesmit/with-next-apollo-tree-walker/actions)
+[![npm version](https://badge.fury.io/js/with-next-apollo-tree-walker.svg)](https://badge.fury.io/js/with-next-apollo-tree-walker)
 
 ## What is it?
 This package consists of a `withApolloTreeWalker` HOC and a `useApolloCacheController` hook.

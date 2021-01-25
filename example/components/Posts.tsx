@@ -35,13 +35,6 @@ const Posts: React.FC = () => {
 
   const loadingMorePosts = networkStatus === NetworkStatus.fetchMore
 
-  const loadMorePosts = () => {
-    fetchMore({
-      variables: {
-        skip: allPosts.length,
-      },
-    })
-  }
 
   if (error) return <ErrorMessage message="Error loading posts." />
   if (loading && !loadingMorePosts) return <div>Loading</div>
@@ -49,6 +42,14 @@ const Posts: React.FC = () => {
   const { allPosts, _allPostsMeta } = data
   const areMorePosts = allPosts.length < _allPostsMeta.count
 
+  const loadMorePosts = () => {
+    fetchMore({
+      variables: {
+        skip: allPosts.length,
+      },
+    })
+  }
+  
   return (
     <section>
       <ul>
